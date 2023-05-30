@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'calorlyte',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt.token_blacklist'
+
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
+
+AUTH_USER_MODEL = 'calorlyte.User'
