@@ -9,6 +9,7 @@ module.exports = {
         'mod-teal': '#00d6e0',
         'mod-black': '#222831',
         'mod-white': '#EEEEEE',
+        'mod-grey': '#393E46',
       },
     },
   },
