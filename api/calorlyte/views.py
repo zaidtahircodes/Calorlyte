@@ -40,7 +40,7 @@ class LoginView(APIView):
             # once authtenicated log user in and create the token
             if user:
                 login(request, user)
-                token = Token.objects.get_or_create(user=user)
+                token, _ = Token.objects.get_or_create(user=user)
                 return Response({'token': token.key}, status=status.HTTP_200_OK)
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -49,3 +49,14 @@ class LogoutView(APIView):
     def post(self, request):
         logout(request)
         return Response(status=status.HTTP_200_OK)
+
+class calcBMI(APIView):
+    
+    def get(self, request):
+        BMI = request.data
+        print(BMI)
+
+    # Get weight and height in metre and feet as input from api
+    # calculate bmi applying formula
+    # take auth token
+    # send back data(bmi calculation and how underweight) in json form
