@@ -39,3 +39,11 @@ class BMISeralizer(serializers.ModelSerializer):
 
         validated_data['bmi'] = bmi
         return super().create(validated_data)
+    
+    def update(self, instance, validated_data):
+        instance.height = validated_data.get('height', instance.height)
+        instance.weight = validated_data.get('weight', instance.weight)
+        instance.bmi = instance.weight / (instance.height * instance.height)
+        instance.save()
+
+        return super().update(instance, validated_data)

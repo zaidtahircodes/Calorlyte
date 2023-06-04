@@ -77,7 +77,16 @@ class calcBMI(APIView):
             return Response(serializer.data, status=200)
         else:
             return Response(serializer.errors, status=400)
-        
+
+     # get BMI data   
+    def get(self, request):
+        try:
+            bmi = BMI.objects.get(user=request.user)
+        except BMI.DoesNotExist:
+            return Response({'error': 'bmi for this user does not exist yet'})
+
+        serializer = BMISeralizer(bmi)
+        return Response(serializer.data, status=200)
 
 
             
