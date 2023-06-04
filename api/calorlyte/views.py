@@ -7,6 +7,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login, logout
 from .serializers import UserSeralizer, LoginSerializer, RegisterSerializer, BMISeralizer
+from .models import BMI
 
 # Create your views here.
 
@@ -61,6 +62,26 @@ class calcBMI(APIView):
             return Response(serializer.data, status=201)
         else:
             return Response(serializer.errors, status=400)
+        
+     # update BMI   
+    def put(self, request):
+        try:
+            bmi = BMI.objects.get(user=request.user)
+        except BMI.DoesNotExist:
+            return Response({'error': 'bmi for this user does not exist yet'})
+
+        serializer = BMISeralizer(bmi, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=200)
+        else:
+            return Response(serializer.errors, status=400)
+        
+
+
+            
+            
         
         
 
