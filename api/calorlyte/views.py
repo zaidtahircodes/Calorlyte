@@ -3,10 +3,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login, logout
-from .serializers import UserSeralizer, LoginSerializer, RegisterSerializer
+from .serializers import UserSeralizer, LoginSerializer, RegisterSerializer, BMISeralizer
+from .models import BMI
 
 # Create your views here.
 
@@ -40,12 +41,60 @@ class LoginView(APIView):
             # once authtenicated log user in and create the token
             if user:
                 login(request, user)
-                token = Token.objects.get_or_create(user=user)
+                token, _ = Token.objects.get_or_create(user=user)
                 return Response({'token': token.key}, status=status.HTTP_200_OK)
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request):
         logout(request)
         return Response(status=status.HTTP_200_OK)
+
+class calcBMI(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = BMISeralizer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=201)
+        else:
+            return Response(serializer.errors, status=400)
+        
+     # update BMI   
+    def put(self, request):
+        try:
+            bmi = BMI.objects.get(user=request.user)
+        except BMI.DoesNotExist:
+            return Response({'error': 'bmi for this user does not exist yet'})
+
+        serializer = BMISeralizer(bmi, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=200)
+        else:
+            return Response(serializer.errors, status=400)
+
+     # get BMI data   
+    def get(self, request):
+        try:
+            bmi = BMI.objects.get(user=request.user)
+        except BMI.DoesNotExist:
+            return Response({'error': 'bmi for this user does not exist yet'})
+
+        serializer = BMISeralizer(bmi)
+        return Response(serializer.data, status=200)
+
+
+            
+            
+        
+        
+
+    # Get weight and height in metre and feet as input from api (done)
+    # calculate bmi applying formula
+    # take auth token
+    # send back data(bmi calculation and how underweight) in json form

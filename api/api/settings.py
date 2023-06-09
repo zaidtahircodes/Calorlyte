@@ -29,6 +29,11 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'calorlyte',
     'rest_framework.authtoken',
-    'rest_framework_simplejwt.token_blacklist'
+    
 
 ]
 
