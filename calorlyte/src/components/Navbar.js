@@ -7,7 +7,7 @@ export default function Navbar() {
     return (
       
 
-<nav class="border-gray-200 dark:bg-gray-900 bg-mod-black drop-shadow-lg" >
+<nav class="border-gray-200 dark:bg-gray-900 bg-mod-black drop-shadow-lg sticky top-0 " >
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center">
         <img width="60px" height="50px" src={Bolt}/>
