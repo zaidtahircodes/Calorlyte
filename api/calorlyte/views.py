@@ -94,7 +94,4 @@ class calcBMI(APIView):
         
         
 
-    # Get weight and height in metre and feet as input from api (done)
-    # calculate bmi applying formula
-    # take auth token
     # send back data(bmi calculation and how underweight) in json form
