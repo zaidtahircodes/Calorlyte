@@ -1,9 +1,16 @@
-
-
+import Footer from "./components/Footer"
+import Navbar from "./components/Navbar"
+import Hero from "./components/Hero"
+import Testimonal from "./components/Testimonal"
+import Features from "./components/Features"
 export default function Home() {
   return (
 <main>
-  <h1>Calorlyte refactor</h1>
+<Navbar/>
+<Hero />
+<Features/>
+<Testimonal/>
+<Footer/>
 </main>
   )
 }
