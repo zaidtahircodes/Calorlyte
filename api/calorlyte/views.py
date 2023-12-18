@@ -50,7 +50,7 @@ class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, request):
         logout(request)
-        return Response(status=status.HTTP_200_OK)
+        return Response("brrrrr", status=status.HTTP_200_OK)
 
 class calcBMI(APIView):
     permission_classes = [IsAuthenticated]
@@ -87,11 +87,4 @@ class calcBMI(APIView):
 
         serializer = BMISeralizer(bmi)
         return Response(serializer.data, status=200)
-
-
-            
-            
-        
-        
-
     # send back data(bmi calculation and how underweight) in json form
