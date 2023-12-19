@@ -5,7 +5,7 @@ import Testimonal from "./components/Testimonal"
 import Features from "./components/Features"
 export default function Home() {
   return (
-<main>
+<main className="bg-gray-900">
 <Navbar/>
 <Hero />
 <Features/>
