@@ -50,7 +50,7 @@ class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, request):
         logout(request)
-        return Response("brrrrr", status=status.HTTP_200_OK)
+        return Response("Succesfully logged out", status=status.HTTP_200_OK)
 
 class calcBMI(APIView):
     permission_classes = [IsAuthenticated]
@@ -68,7 +68,7 @@ class calcBMI(APIView):
         try:
             bmi = BMI.objects.get(user=request.user)
         except BMI.DoesNotExist:
-            return Response({'error': 'bmi for this user does not exist yet'})
+            return Response({'error': 'BMI for this user does not exist yet'})
 
         serializer = BMISeralizer(bmi, data=request.data, partial=True)
         
