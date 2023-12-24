@@ -2,7 +2,7 @@ import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import ContentHome from "./components/ContentHome"
-import Testimonal from "./components/Testimonal"
+import FAQ from "./components/FAQ"
 import Features from "./components/Features"
 import StatisticsHome from "./components/StatisticsHome"
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
 <ContentHome/>
 <Features/>
 <StatisticsHome />
-<Testimonal/>
+<FAQ/>
 <Footer/>
 </main>
   )
