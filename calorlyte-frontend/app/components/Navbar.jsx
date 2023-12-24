@@ -5,8 +5,8 @@ export default function Navbar() {
 
 <nav className="bg-[#111827] sticky border-[#111827] w-full">
   <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-  <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-       <img width="60px" height="50px" src="/Bolt.png"/>
+  <a href="https://flowbite.com/" class="flex items-center rtl:space-x-reverse">
+       <img width="70px" height="50px" src="/logo.png"/>
       <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Calorlyte</span>
   </a>
   <div class="md:flex md:order-3 hidden space-x-3 md:space-x-0 rtl:space-x-reverse">

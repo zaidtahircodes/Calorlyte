@@ -8,8 +8,8 @@ export default function ContentHome() {
             <p>Calorlyte is your one-stop shop for a fitter, happier, and healthier life.</p>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-8">
-            <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1" />
-            <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2" />
+            <img className="w-full md:scale-110 rounded-lg" src="/Content1.jpg" alt="office content 1" />
+            <img className="mt-4 w-full md:ml-4 lg:mt-10 rounded-lg" src="/Content2.jpg" alt="office content 2" />
         </div>
     </div>
 </section>
