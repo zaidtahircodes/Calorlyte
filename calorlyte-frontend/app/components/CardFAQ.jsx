@@ -4,7 +4,7 @@ export default function CardFAQ() {
   const [isOpen, setIsOpen] = useState(false)
     return (
       <li className="bg-mod-black my-2 shadow-lg" onClick={() => setIsOpen(!isOpen)}>
-            <h2 className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer">
+            <h2 className="flex flex-row justify-between items-center text-white font-semibold p-3 cursor-pointer">
               <span>How will my calories be tracked?</span>
               <svg className="fill-current text-mod-teal h-6 w-6 transform transition-transform duration-500"
                 viewBox="0 0 20 20"
